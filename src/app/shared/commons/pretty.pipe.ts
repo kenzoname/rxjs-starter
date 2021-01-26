@@ -10,3 +10,4 @@ import { Pipe, PipeTransform } from "@angular/core";
         .replace(/\n/g, '<br/>'); // same here
     }
   }
+  

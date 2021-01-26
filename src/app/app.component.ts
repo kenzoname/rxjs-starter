@@ -59,7 +59,7 @@ export class AppComponent {
       },
       {
         name: 'combineLatest',
-        url: 'combine/combine-all'
+        url: 'combine/combine-latest'
       },
       {
         name: 'concatAll',

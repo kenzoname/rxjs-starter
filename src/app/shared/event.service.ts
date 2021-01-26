@@ -8,6 +8,35 @@ import { Log } from "./log.interface";
 export class EventService {
     log:  EventEmitter<any> = new EventEmitter();
     $log = this.log.asObservable();
+    info(mess, comment=null) {
+        console.info(comment, mess);
+        
+        this.log.next({type: 'info', message: mess})
+        if (comment) this.log.next({type: 'info', message: comment});
+    }
+
+    error(mess, comment=null) {
+        console.info(comment, mess);
+        if (comment) this.log.next({type: 'info', message: comment});
+        this.log.next({type: 'error', message: mess})
+    }
+    warn(mess, comment=null) {
+        console.info(comment, mess);
+        if (comment) this.log.next({type: 'info', message: comment});
+        this.log.next({type: 'warn', message: mess})
+    }
+    debug(mess, comment=null) {
+        console.info(comment, mess);
+        if (comment) this.log.next({type: 'info', message: comment});
+        this.log.next({type: 'debug', message: mess})
+       
+    }
+    success(mess, comment=null) {
+        console.info(comment, mess);
+        if (comment) this.log.next({type: 'info', message: comment});
+        this.log.next({type: 'sucess', message: mess})
+       
+    }
     sendLogs(log: Log) {
         switch(log.type) {
             case 'info':
@@ -20,5 +49,6 @@ export class EventService {
                 console.debug(log.message);break;
         }
         this.log.next(log)
+       ;
     }
 }

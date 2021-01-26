@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConsoleInterfaceComponent } from './console-interface/console-interface.component';
-import { NzButtonModule } from 'ng-zorro-antd';
+import { NzButtonModule, NzIconModule } from 'ng-zorro-antd';
 import { PrettyPrintPipe } from './commons/pretty.pipe';
+import { ObserverService } from './fake/observer.service';
 
 
 
@@ -10,8 +11,10 @@ import { PrettyPrintPipe } from './commons/pretty.pipe';
   declarations: [ConsoleInterfaceComponent, PrettyPrintPipe],
   imports: [
     CommonModule,
-    NzButtonModule
+    NzButtonModule,
+    NzIconModule
   ],
-  exports: [ConsoleInterfaceComponent, PrettyPrintPipe]
+  providers: [ObserverService],
+  exports: [NzButtonModule, NzIconModule, ConsoleInterfaceComponent, PrettyPrintPipe]
 })
 export class SharedModule { }
